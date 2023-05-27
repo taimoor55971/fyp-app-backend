@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
+require("dotenv").config() 
 
-mongoose.connect('mongodb://localhost/fyp-internal-test', {
+const {DATABASE_URL}=process.env
+
+
+mongoose.connect(DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
