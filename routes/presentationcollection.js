@@ -1,12 +1,12 @@
 const express=require('express')
-const  {Administrator}  = require("../models/fyp-models");
+const  {Presentation}  = require("../models/fyp-models");
 
 const router= express.Router()
 
 router.get("/", async (req, res) => {
-    let admin = await Administrator.find({});
+    let presentation = await Presentation.find({});
     if (res.status(200)) {
-      res.send(admin);
+      res.send(presentation);
     }
   });
 
@@ -14,21 +14,18 @@ router.get("/", async (req, res) => {
     let data =await req.body
     
     let resp={}
-    let admin;
+    let presentation;
     if(data){
         try {
-            admin = new Administrator(data);
-            resp = await admin.save();
+            presentation = new Presentation(data);
+            resp = await presentation.save();
             
         }
         catch (err) {
             console.log(err)
         }
     }
-    res.send(admin)
+    res.send(presentation)
   })
 
-
   module.exports = router;
-
-

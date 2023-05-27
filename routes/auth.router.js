@@ -1,5 +1,5 @@
 require("dotenv").config(); // load .env variables
-const { User } = require("../models/fyp-models");
+const { User,Administrator } = require("../models/fyp-models");
 const mongoose = require("../database/connection");
 const _ = require("lodash"); // For some extra utilities
 const express = require("express");
@@ -77,9 +77,7 @@ router.get("/", async (req, res) => {
 router.get('/:name',async(req,res)=>{
     let name=req.params.name
     let user=await User.find({name}) 
-    console.log(user);
     res.send(user)
-    console.log(req.params.name);
 })
 
 
